@@ -1,0 +1,34 @@
+/*
+ * Foundation 5 Grid
+ */
+
+.txt-centered {
+	padding: 3em;
+	text-align: center;
+}
+
+.wrapper-flex {
+	display: flex;
+}
+
+.wrapper-flex-column {
+	display: flex;
+	flex-flow: column;
+	position: relative;
+}
+
+.wrapper-flex-row {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-around;
+	align-items: center;
+	position: relative;
+}
+
+.wrapper-flex-row-around {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+}

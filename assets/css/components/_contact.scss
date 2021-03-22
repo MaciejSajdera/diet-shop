@@ -1,0 +1,129 @@
+.contact-data-section {
+	// background: $background__main-theme--light-blue;
+	padding: 0em 0% 0em;
+
+	@media screen and (min-width: 992px) {
+		margin-bottom: 8rem;
+	}
+
+	.wrapper-flex {
+		justify-content: space-between;
+	}
+
+	.contact-data__wrapper {
+		height: 100%;
+		position: relative;
+
+		padding: 3em 2rem 4em;
+		background: $background__main-theme--light-blue;
+		display: flex;
+		flex-flow: column;
+
+		@media screen and (min-width: 992px) {
+			padding: 0em 10% 0em;
+			flex-flow: row;
+			justify-content: space-between;
+		}
+
+		.contact-data__wrapper-text {
+			@media screen and (max-width: 992px) {
+				margin-bottom: 4rem;
+			}
+
+			@media screen and (min-width: 992px) {
+				width: 45%;
+				padding: 0 4rem;
+			}
+		}
+
+		.contact-data__wrapper-map {
+			@media screen and (min-width: 992px) {
+				width: 45%;
+				position: relative;
+			}
+
+			#map_wrapper {
+				width: 100%;
+
+				@media screen and (min-width: 992px) {
+					position: absolute;
+					box-shadow: $box-shadow_standard;
+
+					height: 150%;
+					top: -25%;
+				}
+			}
+		}
+	}
+}
+
+.contact-form-section {
+	.common-template__header {
+		@media screen and (min-width: 992px) {
+			padding: 2em 0%;
+		}
+	}
+
+	.wpcf7 {
+		display: flex;
+		justify-content: center;
+
+		margin: auto;
+
+		@media screen and (min-width: 992px) {
+			width: 70%;
+		}
+
+		form {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+
+			p {
+				width: 100%;
+				padding: 1em;
+			}
+
+			p:nth-of-type(1) {
+				margin-top: auto;
+			}
+
+			p:nth-of-type(1),
+			p:nth-of-type(2),
+			p:nth-of-type(3) {
+				@media screen and (min-width: 992px) {
+					width: 30%;
+				}
+			}
+
+			p:nth-of-type(1),
+			p:nth-of-type(2),
+			p:nth-of-type(3),
+			p:nth-of-type(4) {
+				box-shadow: 0 0px 15px 1px rgb(0 0 0 / 10%),
+					0 0px 6px 0px rgb(0 0 0 / 5%);
+				border-radius: 20px;
+			}
+
+			p:nth-of-type(4) {
+				margin-top: 2em;
+			}
+
+			.wpcf7-submit {
+				max-width: 40%;
+				margin: auto;
+			}
+
+			textarea,
+			input {
+				outline: none;
+			}
+		}
+	}
+}
+
+.page-template-contact-page {
+	footer#colophon {
+		padding: 0;
+	}
+}

@@ -1,0 +1,126 @@
+.offer-page {
+	.common-template__header__header {
+		padding: 4em 10%;
+		height: 6rem;
+	}
+
+	section {
+		h2 {
+			text-align: center;
+		}
+
+		.bg-image {
+			height: 30em;
+			width: 100%;
+			background-position: top;
+
+			@media screen and (max-width: 992px) {
+				margin: 2em 0;
+			}
+		}
+
+		.wrapper-flex {
+			flex-flow: column;
+		}
+	}
+
+	&__part1 {
+		@media screen and (max-width: 992px) {
+			background: $background__main-theme--light-blue;
+		}
+	}
+
+	&__part1,
+	&__part2 {
+		p {
+			align-self: flex-start;
+			@include fluid-type($min_width, $max_width, 18px, 20px);
+		}
+
+		@media screen and (min-width: 992px) {
+			padding: 1em 15% 0em;
+
+			.wrapper-flex:nth-of-type(1) {
+				flex-flow: row-reverse;
+				justify-content: space-between;
+
+				.bg-image {
+					width: 50%;
+					background-size: contain;
+					background-position: left;
+
+					height: 37em;
+
+					@media screen and (min-width: 1700px) {
+						height: 40em;
+					}
+				}
+
+				&:after {
+					content: "";
+					position: absolute;
+					background: $background__main-theme--light-blue;
+					top: 0%;
+					width: 100%;
+					display: block;
+					height: 81%;
+					left: 0;
+					z-index: -1;
+
+					@media screen and (min-width: 1500px) {
+						height: 79%;
+					}
+				}
+			}
+
+			.text-wrapper {
+				padding: 0em 6em 0 4em;
+			}
+
+			.wrapper-flex:nth-of-type(2) {
+				flex-flow: row;
+				justify-content: space-between;
+
+				.text-wrapper {
+					width: 70%;
+					padding: 0em 6em 0 0;
+				}
+
+				.bg-image {
+					width: 50%;
+					background-size: contain;
+					background-position: top;
+					height: 22em;
+				}
+			}
+		}
+	}
+
+	&__part2 {
+		@media screen and (min-width: 992px) {
+			padding: 7em 15% 0em;
+
+			.wrapper-flex:nth-of-type(1) {
+				&:after {
+					display: none;
+				}
+			}
+
+			.bg-image {
+				background-position: top;
+			}
+
+			.common-elements__section-title {
+				margin-top: 0;
+			}
+		}
+	}
+
+	&__part3 {
+		padding: 1em 5% 5em;
+
+		@media screen and (min-width: 992px) {
+			padding: 4em 10% 8em;
+		}
+	}
+}

@@ -1,0 +1,65 @@
+.consultations {
+	.consultations_page_part_1,
+	.consultations_page_part_2 {
+		.wrapper-flex {
+			flex-wrap: wrap;
+		}
+
+		.text-wrapper,
+		.bg-image {
+			width: 100%;
+
+			@media screen and (min-width: 992px) {
+				width: 50%;
+			}
+		}
+
+		.text-wrapper:nth-of-type(1) {
+			width: 100%;
+		}
+
+		.text-wrapper {
+			padding: 2rem 0;
+
+			@media screen and (min-width: 992px) {
+				padding: 2rem 2rem 4rem 4rem;
+			}
+
+			h3 {
+				margin-top: 0;
+			}
+
+			p {
+				text-align: left;
+				@include fluid-type($min_width, $max_width, 18px, 20px);
+
+				@media screen and (min-width: 992px) {
+					align-self: flex-start;
+				}
+			}
+		}
+	}
+
+	.consultations_page_part_1 {
+		background-color: $background__main-theme--light-blue;
+
+		.bg-image {
+			background-size: cover;
+			background-position: center;
+
+			min-height: 25em;
+
+			max-height: 800px;
+		}
+	}
+
+	.consultations_page_part_2 {
+		// padding-bottom: 6rem;
+		padding-top: 4rem;
+
+		.green-button {
+			margin: 4rem auto;
+			@include fluid-type($min_width, $max_width, 16px, 26px);
+		}
+	}
+}

@@ -1,0 +1,154 @@
+.prices-section {
+	background: $background__main-theme--light-blue;
+
+	@media screen and (min-width: 992px) {
+		margin-bottom: 12em;
+	}
+}
+
+.prices-container {
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-around;
+
+	height: 100%;
+	text-align: center;
+
+	@media screen and (min-width: 992px) {
+		padding: 5em 0 2em;
+	}
+
+	.prices-wrapper {
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+	}
+
+	h2 {
+		padding-bottom: 1em;
+		padding: 2em 1em;
+		position: relative;
+
+		&:before {
+			content: "";
+			display: block;
+			height: 3px;
+			width: 70px;
+			top: -10px;
+			background: $background__button-green;
+			margin: auto;
+			position: absolute;
+			transform: translateX(-50%);
+			left: 50%;
+
+			// @media screen and (max-width: 992px) {
+			// 	margin: auto;
+			// }
+		}
+
+		@media screen and (min-width: 992px) {
+			padding-bottom: 3em;
+		}
+	}
+
+	@media screen and (max-width: 992px) {
+		flex-flow: row;
+		flex-wrap: wrap;
+	}
+}
+
+.price-box {
+	display: flex;
+	flex-flow: column;
+	// justify-content: center;
+	justify-content: space-evenly;
+	padding: 2em 1em;
+	border-radius: 20px;
+	align-items: center;
+	background: rgb(255 255 255 / 80%) !important;
+	margin: 1em;
+
+	@media screen and (max-width: 992px) {
+		width: 100%;
+	}
+
+	@media screen and (min-width: 992px) {
+		width: 45%;
+	}
+
+	@media screen and (min-width: 1280px) {
+		width: 30%;
+	}
+
+	h4 {
+		color: $color__text-dark;
+		text-align: center;
+		margin: 0.5em 2em 0.25em;
+		font-weight: 600;
+
+		@include fluid-type($min_width, $max_width, 22px, 26px);
+
+		@media screen and (max-width: 992px) {
+			margin: 0.5em auto 0.25em;
+			line-height: 1.25;
+		}
+	}
+
+	&__description {
+		padding-top: 1em;
+		text-align: center;
+		width: 100%;
+		display: block;
+		@include fluid-type($min_width, $max_width, 14px, 16px);
+		color: $color__text-dark;
+	}
+
+	&__price {
+		position: relative;
+		text-align: center;
+		width: 100%;
+		display: block;
+		font-weight: 700;
+		@include fluid-type($min_width, $max_width, 34px, 40px);
+		color: $color__text-dark;
+
+		&:before {
+			content: "";
+			display: block;
+			height: 3px;
+			width: 70px;
+			top: -20px;
+			background: $background__button-green;
+			margin: auto;
+			position: absolute;
+			transform: translateX(-50%);
+			left: 50%;
+		}
+
+		&:after {
+			content: "";
+			display: block;
+			height: 3px;
+			width: 70px;
+			bottom: -20px;
+			background: $background__button-green;
+			margin: auto;
+			position: absolute;
+			transform: translateX(-50%);
+			left: 50%;
+		}
+	}
+
+	a {
+		padding-top: 1em;
+		text-align: center;
+		width: 100%;
+		display: block;
+
+		span {
+			@include fluid-type($min_width, $max_width, 16px, 18px);
+		}
+	}
+}
