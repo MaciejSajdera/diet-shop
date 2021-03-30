@@ -240,7 +240,7 @@ body.home {
 		// 		}
 
 		// 		&:hover {
-		// 			background-color: $color_dark_blue;
+		// 			background-color: $background__main-theme--green;
 		// 			color: $color__background-body;
 		// 		}
 		// 	}
@@ -257,7 +257,7 @@ body.home {
 		transition: 0.2s ease-in-out;
 
 		&:hover {
-			background-color: $color_dark_blue;
+			background-color: $background__main-theme--green;
 
 			> a {
 				color: white;
@@ -268,7 +268,7 @@ body.home {
 		// 	content: "";
 		// 	display: block;
 		// 	position: absolute;
-		// 	background: $color_dark_blue;
+		// 	background: $background__main-theme--green;
 		// 	height: 100%;
 		// 	width: 0%;
 		// 	top: 0;
@@ -459,7 +459,7 @@ ul.sub-menu {
 // 			padding: 0.5em 0;
 
 // 			&:hover {
-// 				background-color: $color_dark_blue;
+// 				background-color: $background__main-theme--green;
 // 			}
 
 // 			a {
@@ -787,7 +787,7 @@ body.home {
 	// 	&:hover {
 	// 		&:after {
 	// 			transform: scale(1.1);
-	// 			color: $color_dark_blue;
+	// 			color: $background__main-theme--green;
 	// 		}
 	// 	}
 	// }
@@ -1046,7 +1046,7 @@ body.home {
 			// }
 
 			// &:hover {
-			// 	border: 3px solid $color_dark_blue;
+			// 	border: 3px solid $background__main-theme--green;
 			// 	border-radius: 10px;
 			// }
 		}
@@ -1208,13 +1208,14 @@ body.home {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		line-height: 1.5 !important;
 
 		@media screen and (max-width: 992px) {
 			box-shadow: none !important;
 		}
 
 		@media screen and (min-width: 992px) {
-			margin-right: 1em;
+			margin-right: 1em !important;
 		}
 
 		svg {
@@ -1224,6 +1225,10 @@ body.home {
 
 			path {
 				transition: all 0.5s ease-in;
+
+				@media screen and (min-width: 992px) {
+					fill: #fff;
+				}
 			}
 		}
 	}
@@ -1240,48 +1245,48 @@ body.home {
 	// 	width: 4em;
 	// }
 
-	.myaccount-link-unlogged {
-		// background: url(../dist/svg/login.svg);
+	// .myaccount-link-unlogged {
+	// 	// background: url(../dist/svg/login.svg);
 
-		// &:hover {
-		// 	background: url(../dist/svg/login-hover.svg);
-		// }
+	// 	// &:hover {
+	// 	// 	background: url(../dist/svg/login-hover.svg);
+	// 	// }
 
-		svg {
-			width: 25px;
-			height: 25px;
+	// 	svg {
+	// 		width: 25px;
+	// 		height: 25px;
 
-			path {
-				transition: all 0.3s ease-in-out;
-			}
-		}
+	// 		path {
+	// 			transition: all 0.3s ease-in-out;
+	// 		}
+	// 	}
 
-		&:hover {
-			svg path {
-				fill: #fff;
-			}
-		}
-	}
+	// 	&:hover {
+	// 		svg path {
+	// 			fill: #fff;
+	// 		}
+	// 	}
+	// }
 
-	.myaccount-link-logged {
-		// background: url(../dist/svg/account_circle_logged.svg);
-		position: relative;
+	// .myaccount-link-logged {
+	// 	// background: url(../dist/svg/account_circle_logged.svg);
+	// 	position: relative;
 
-		svg {
-			width: 25px;
-			height: 25px;
+	// 	svg {
+	// 		width: 25px;
+	// 		height: 25px;
 
-			path:nth-of-type(2) {
-				transition: all 0.3s ease-in-out;
-			}
-		}
+	// 		path:nth-of-type(2) {
+	// 			transition: all 0.3s ease-in-out;
+	// 		}
+	// 	}
 
-		&:hover {
-			svg path:nth-of-type(2) {
-				fill: #fff;
-			}
-		}
-	}
+	// 	&:hover {
+	// 		svg path:nth-of-type(2) {
+	// 			fill: #fff;
+	// 		}
+	// 	}
+	// }
 
 	.cart-customlocation {
 		@media screen and (max-width: 992px) {
@@ -1467,6 +1472,12 @@ body.woocommerce-account {
 // 	}
 // }
 
+.shop-nav__item {
+	@media screen and (min-width: 992px) {
+		background: transparent !important;
+	}
+}
+
 #masthead .nav-toggled {
 	height: 100vh;
 	z-index: 9999;
@@ -1482,10 +1493,6 @@ body.woocommerce-account {
 	.site-branding {
 		z-index: 101;
 		background-image: url(../dist/img/jl-logo-black.png);
-	}
-
-	.shop-nav__item {
-		background: transparent !important;
 	}
 
 	.menu-toggle .line {
@@ -1537,7 +1544,7 @@ body.woocommerce-account {
 
 			span,
 			a {
-				color: $color_dark_blue;
+				color: $background__main-theme--green;
 				background: transparent;
 				height: 100%;
 				width: 100%;
@@ -1546,12 +1553,12 @@ body.woocommerce-account {
 				transition: all 0.2s ease-in-out;
 
 				&:hover {
-					border: 1px solid $color_dark_blue;
+					border: 1px solid $background__main-theme--green;
 				}
 			}
 
 			span.current {
-				border: 1px solid $color_dark_blue;
+				border: 1px solid $background__main-theme--green;
 			}
 		}
 	}

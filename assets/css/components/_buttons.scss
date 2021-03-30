@@ -4,17 +4,17 @@
 .my-blue-bg-button,
 .woocommerce #review_form #respond .form-submit input,
 .order-again a {
-	background: $color_dark_blue !important;
+	background: $background__main-theme--green !important;
 	transition: all 0.2s ease-in !important;
-	border: 1px solid $color_dark_blue !important;
+	border: 1px solid $background__main-theme--green !important;
 	color: $color__text-light !important;
 	cursor: pointer !important;
 	font-family: $font_headers;
 
 	&:hover {
 		background-color: transparent !important;
-		border: 1px solid $color_dark_blue !important;
-		color: $color_dark_blue !important;
+		border: 1px solid $background__main-theme--green !important;
+		color: $background__main-theme--green !important;
 	}
 }
 
@@ -22,7 +22,6 @@
 .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce-checkout .wc-proceed-to-checkout a.my-checkout-button,
 .woocommerce #respond input#submit,
-.woocommerce a.button,
 .woocommerce button.button,
 .woocommerce input.button.my-checkout-button {
 	@include fluid-type($min_width, $max_width, 14px, 20px);
@@ -59,35 +58,35 @@
 	min-width: 150px;
 }
 
-.add_to_cart_button,
-.single_add_to_cart_button,
-.product_type_simple,
-.product_type_variable,
-.woof_reset_search_form,
-.my-blue-outline-button,
-.outofstock .button {
-	background-color: transparent !important;
-	color: $color_dark_blue !important;
-	border: 1px solid $color_dark_blue !important;
-	transition: all 0.2s ease-in;
-	cursor: pointer;
-	display: inline-block !important;
-	font-family: $font_headers;
-	white-space: nowrap;
+// .add_to_cart_button,
+// .single_add_to_cart_button,
+// .product_type_simple,
+// .product_type_variable,
+// .woof_reset_search_form,
+// .my-blue-outline-button,
+// .outofstock .button {
+// 	background-color: transparent !important;
+// 	color: $background__main-theme--green !important;
+// 	border: 1px solid $background__main-theme--green !important;
+// 	transition: all 0.2s ease-in;
+// 	cursor: pointer;
+// 	display: inline-block !important;
+// 	font-family: $font_headers;
+// 	white-space: nowrap;
 
-	// @media screen and (max-width: 440px) {
-	// 	font-size: 13px !important;
-	// }
+// 	// @media screen and (max-width: 440px) {
+// 	// 	font-size: 13px !important;
+// 	// }
 
-	&:hover {
-		color: $color__text-light !important;
-		background-color: $color_dark_blue !important;
-	}
-}
+// 	&:hover {
+// 		color: $color__text-light !important;
+// 		background-color: $background__main-theme--green !important;
+// 	}
+// }
 
 .read-more,
 .read-more:visited {
-	background-color: $color_dark_blue !important;
+	background-color: $background__main-theme--green !important;
 	// width: fit-content !important;
 	color: $color__text-light !important;
 	padding: 0.5em 2em !important;
@@ -95,13 +94,13 @@
 	border-radius: 100rem !important;
 	text-decoration: none !important;
 	transition: all 0.2s ease-in !important;
-	border: 1px solid $color_dark_blue !important;
+	border: 1px solid $background__main-theme--green !important;
 	cursor: pointer;
 
 	&:hover {
 		background-color: transparent !important;
-		border: 1px solid $color_dark_blue !important;
-		color: $color_dark_blue !important;
+		border: 1px solid $background__main-theme--green !important;
+		color: $background__main-theme--green !important;
 	}
 }
 
@@ -118,20 +117,20 @@
 .my-woobutton:visited {
 	background-color: transparent !important;
 	width: fit-content !important;
-	color: $color_dark_blue !important;
+	color: $background__main-theme--green !important;
 	padding: 0.75em 2em !important;
 	font-weight: 600 !important;
 	border-radius: 100rem !important;
 	text-decoration: none !important;
 	transition: all 0.2s ease-in !important;
-	border: 1px solid $color_dark_blue !important;
+	border: 1px solid $background__main-theme--green !important;
 	cursor: pointer;
 	margin: 0 auto;
 	@include fluid-type($min_width, $max_width, 12px, 16px);
 
 	&:hover {
-		background-color: $color_dark_blue !important;
-		border: 1px solid $color_dark_blue !important;
+		background-color: $background__main-theme--green !important;
+		border: 1px solid $background__main-theme--green !important;
 		color: $color__text-light !important;
 	}
 }
@@ -139,12 +138,12 @@
 #toggle-filters {
 	background-color: transparent;
 	width: fit-content;
-	color: $color_dark_blue;
+	color: $background__main-theme--green;
 	font-weight: 600;
 	border-radius: 100rem;
 	text-decoration: none;
 	transition: all 0.2s ease-in;
-	border: 2px solid $color_dark_blue;
+	border: 2px solid $background__main-theme--green;
 	cursor: pointer;
 	width: 100%;
 	padding: 0.5em 1em 0.5em 2em;
@@ -153,21 +152,21 @@
 
 .my-wooselect,
 .my-wooselect:visited {
-	background-color: $color_dark_blue !important;
+	background-color: $background__main-theme--green !important;
 	width: fit-content !important;
 	color: $color__text-light !important;
 	font-weight: 600 !important;
 	border-radius: 100rem !important;
 	text-decoration: none !important;
 	transition: all 0.2s ease-in !important;
-	border: 1px solid $color_dark_blue !important;
+	border: 1px solid $background__main-theme--green !important;
 	outline: none !important;
 	cursor: pointer;
 
 	// &:hover {
 	// 	background-color: transparent !important;
-	// 	border: 1px solid $color_dark_blue !important;
-	// 	color: $color_dark_blue !important;
+	// 	border: 1px solid $background__main-theme--green !important;
+	// 	color: $background__main-theme--green !important;
 	// }
 
 	@media screen and (max-width: 992px) {
@@ -186,7 +185,7 @@
 	cursor: pointer;
 
 	&:hover {
-		color: $color_dark_blue !important;
+		color: $background__main-theme--green !important;
 		background-color: $color__text-light !important;
 	}
 }
@@ -355,10 +354,10 @@ input:-webkit-autofill:active {
 
 // .choose-retail {
 // 	background-color: white;
-// 	color: $color_dark_blue;
+// 	color: $background__main-theme--green;
 
 // 	&:hover {
-// 		background-color: $color_dark_blue;
+// 		background-color: $background__main-theme--green;
 // 		color: white;
 // 	}
 // }
@@ -370,7 +369,7 @@ input:-webkit-autofill:active {
 
 // 	&:hover {
 // 		background-color: white;
-// 		color: $color_dark_blue;
+// 		color: $background__main-theme--green;
 // 		border: 1px solid white;
 // 	}
 // }
@@ -392,7 +391,7 @@ input:-webkit-autofill:active {
 	// box-shadow: 0 2px 15px 5px rgb(0 0 0 / 10%), 0 2px 6px 0px rgb(0 0 0 / 5%);
 	line-height: 1.5;
 	cursor: pointer;
-	display: flex;
+	display: flex !important;
 	align-items: center;
 	text-align: center;
 	justify-content: center;
@@ -468,10 +467,14 @@ input:-webkit-autofill:active {
 
 	&__outline--green {
 		padding: 0.75em 1.5em;
-		background: transparent;
+		// background: transparent !important;
 		color: $color__text-light !important;
-		border-color: $background__main-theme--green;
-		border-radius: 100rem;
+		border-radius: 100rem !important;
+		border: 2px solid $background__main-theme--green !important;
+
+		@media screen and (min-width: 992px) {
+			border: 3px solid $background__main-theme--green !important;
+		}
 
 		// svg {
 		// 	path.svg-icon {
@@ -552,6 +555,15 @@ input:-webkit-autofill:active {
 	// }
 }
 
+.wc-backward {
+	span {
+		&:after {
+			left: -20px;
+			transform: translateY(-50%) rotate(180deg) !important;
+		}
+	}
+}
+
 .call-us-text-desktop {
 	@media screen and (max-width: 992px) {
 		display: none;
@@ -582,17 +594,24 @@ button:disabled {
 //new
 
 .green-button,
-.contact-form form.wpcf7-form .wpcf7-submit {
+.contact-form form.wpcf7-form .wpcf7-submit,
+.add_to_cart_button,
+.single_add_to_cart_button,
+.product_type_simple,
+.product_type_variable,
+.woof_reset_search_form,
+.my-blue-outline-button,
+.outofstock .button {
 	background: $background__button-green !important;
 	transition: all 0.2s ease-in !important;
 	border: 1px solid $background__button-green !important;
 	color: $color__text-light !important;
 	cursor: pointer !important;
 	font-family: $font_headers;
-	border-radius: 100rem;
-	padding: 0.75em 3em;
+	border-radius: 100rem !important;
+	padding: 0.75em 3em !important;
 	box-shadow: $box-shadow_standard;
-	@include fluid-type($min_width, $max_width, 24px, 26px);
+	// @include fluid-type($min_width, $max_width, 24px, 26px);
 
 	white-space: nowrap;
 

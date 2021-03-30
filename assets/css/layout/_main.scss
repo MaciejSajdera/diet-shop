@@ -48,7 +48,7 @@
 			position: absolute;
 			height: 2px;
 			width: 0%;
-			background: $color_dark_blue;
+			background: $background__main-theme--green;
 			bottom: 0;
 			transition: 0.2s ease-in-out;
 		}
@@ -59,14 +59,14 @@
 			position: absolute;
 			height: 3px;
 			width: 0%;
-			background: $color_dark_blue;
+			background: $background__main-theme--green;
 			top: 0;
 			transition: 0.2s ease-in-out;
 		}
 
 		&:hover {
-			// border-top: 3px solid $color_dark_blue;
-			// border-bottom: 3px solid $color_dark_blue;
+			// border-top: 3px solid $background__main-theme--green;
+			// border-bottom: 3px solid $background__main-theme--green;
 
 			p {
 				transform: scale(1.2);

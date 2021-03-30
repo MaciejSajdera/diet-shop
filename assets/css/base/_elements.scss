@@ -359,12 +359,12 @@ div.woof_info_popup {
 // }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs li.my_description_tab {
-	border: 1px solid $color_dark_blue;
+	border: 1px solid $background__main-theme--green;
 	border-bottom-color: #fff;
 
 	&:before,
 	&:after {
-		border-color: $color_dark_blue;
+		border-color: $background__main-theme--green;
 		box-shadow: -2px 2px 0 transparent;
 	}
 
@@ -382,11 +382,12 @@ div.woof_info_popup {
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
-	background: $color_dark_blue;
+	background: $background__main-theme--green;
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs li a {
 	color: $color__text-light;
+	transition: transform 0.5s ease-in-out, color 0s linear;
 }
 
 .count {

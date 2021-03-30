@@ -366,11 +366,12 @@ add_action( 'init', function(){
 	});
 
 
-function disable_woo_commerce_sidebar() {
+function disable_woo_functionalities() {
 	remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10); 
+	remove_action( 'woocommerce_before_shop_loop' , 'woocommerce_result_count', 20 );
+	remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 }
-add_action('init', 'disable_woo_commerce_sidebar');
-
+add_action('init', 'disable_woo_functionalities');
 
 add_filter( 'woocommerce_min_password_strength', 'reduce_min_strength_password_requirement' );
 function reduce_min_strength_password_requirement( $strength ) {
@@ -704,14 +705,29 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
 	
 		<span class="shop-nav__item-title">Koszyk</span>
 
+
+
 		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 		width="92px" height="92px" viewBox="0 0 92 92" enable-background="new 0 0 92 92" xml:space="preserve">
-		<path fill="#fff" id="XMLID_1732_" d="M91.8,27.3L81.1,61c-0.8,2.4-2.9,4-5.4,4H34.4c-2.4,0-4.7-1.5-5.5-3.7L13.1,19H4c-2.2,0-4-1.8-4-4
-		s1.8-4,4-4h11.9c1.7,0,3.2,1.1,3.8,2.7L36,57h38l8.5-27H35.4c-2.2,0-4-1.8-4-4s1.8-4,4-4H88c1.3,0,2.5,0.7,3.2,1.7
-		C92,24.7,92.2,26.1,91.8,27.3z M36.4,70.3c-1.7,0-3.4,0.7-4.6,1.9c-1.2,1.2-1.9,2.9-1.9,4.6c0,1.7,0.7,3.4,1.9,4.6
-		c1.2,1.2,2.9,1.9,4.6,1.9s3.4-0.7,4.6-1.9c1.2-1.2,1.9-2.9,1.9-4.6c0-1.7-0.7-3.4-1.9-4.6C39.8,71,38.1,70.3,36.4,70.3z M72.3,70.3
-		c-1.7,0-3.4,0.7-4.6,1.9s-1.9,2.9-1.9,4.6c0,1.7,0.7,3.4,1.9,4.6c1.2,1.2,2.9,1.9,4.6,1.9c1.7,0,3.4-0.7,4.6-1.9
-		c1.2-1.2,1.9-2.9,1.9-4.6c0-1.7-0.7-3.4-1.9-4.6S74,70.3,72.3,70.3z"/>
+
+		<?php
+		if (is_home()) {
+
+			echo '<path fill="#fff" id="XMLID_1732_" d="M91.8,27.3L81.1,61c-0.8,2.4-2.9,4-5.4,4H34.4c-2.4,0-4.7-1.5-5.5-3.7L13.1,19H4c-2.2,0-4-1.8-4-4
+			s1.8-4,4-4h11.9c1.7,0,3.2,1.1,3.8,2.7L36,57h38l8.5-27H35.4c-2.2,0-4-1.8-4-4s1.8-4,4-4H88c1.3,0,2.5,0.7,3.2,1.7
+			C92,24.7,92.2,26.1,91.8,27.3z M36.4,70.3c-1.7,0-3.4,0.7-4.6,1.9c-1.2,1.2-1.9,2.9-1.9,4.6c0,1.7,0.7,3.4,1.9,4.6
+			c1.2,1.2,2.9,1.9,4.6,1.9s3.4-0.7,4.6-1.9c1.2-1.2,1.9-2.9,1.9-4.6c0-1.7-0.7-3.4-1.9-4.6C39.8,71,38.1,70.3,36.4,70.3z M72.3,70.3
+			c-1.7,0-3.4,0.7-4.6,1.9s-1.9,2.9-1.9,4.6c0,1.7,0.7,3.4,1.9,4.6c1.2,1.2,2.9,1.9,4.6,1.9c1.7,0,3.4-0.7,4.6-1.9
+			c1.2-1.2,1.9-2.9,1.9-4.6c0-1.7-0.7-3.4-1.9-4.6S74,70.3,72.3,70.3z"/>';
+		} else {
+			echo '<path fill="#000" id="XMLID_1732_" d="M91.8,27.3L81.1,61c-0.8,2.4-2.9,4-5.4,4H34.4c-2.4,0-4.7-1.5-5.5-3.7L13.1,19H4c-2.2,0-4-1.8-4-4
+			s1.8-4,4-4h11.9c1.7,0,3.2,1.1,3.8,2.7L36,57h38l8.5-27H35.4c-2.2,0-4-1.8-4-4s1.8-4,4-4H88c1.3,0,2.5,0.7,3.2,1.7
+			C92,24.7,92.2,26.1,91.8,27.3z M36.4,70.3c-1.7,0-3.4,0.7-4.6,1.9c-1.2,1.2-1.9,2.9-1.9,4.6c0,1.7,0.7,3.4,1.9,4.6
+			c1.2,1.2,2.9,1.9,4.6,1.9s3.4-0.7,4.6-1.9c1.2-1.2,1.9-2.9,1.9-4.6c0-1.7-0.7-3.4-1.9-4.6C39.8,71,38.1,70.3,36.4,70.3z M72.3,70.3
+			c-1.7,0-3.4,0.7-4.6,1.9s-1.9,2.9-1.9,4.6c0,1.7,0.7,3.4,1.9,4.6c1.2,1.2,2.9,1.9,4.6,1.9c1.7,0,3.4-0.7,4.6-1.9
+			c1.2-1.2,1.9-2.9,1.9-4.6c0-1.7-0.7-3.4-1.9-4.6S74,70.3,72.3,70.3z"/>';
+		}
+		?>
 		</svg>
 		
 		<span id="cart-counter"><?php echo sprintf($woocommerce->cart->cart_contents_count);?></span>
@@ -922,6 +938,13 @@ function filter_woocommerce_cart_shipping_method_full_label( $label, $method ) {
 add_action('init', function(){
     remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
     add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+
+	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
+	add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_price', 10 );
+
+
+	remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+	add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 20 );
 });
 
 if ( ! function_exists( 'woocommerce_template_loop_product_thumbnail' ) ) {
@@ -984,7 +1007,6 @@ if ( ! function_exists( 'woocommerce_get_product_thumbnail' ) ) {
 // Remove the product rating display on product loops
 remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
 
-
 add_filter( 'the_title', 'shorten_woo_product_title', 10, 2 );
 function shorten_woo_product_title( $title, $id ) {
 	global $woocommerce_loop;
@@ -994,6 +1016,157 @@ function shorten_woo_product_title( $title, $id ) {
         return $title;
     }
 }
+
+
+// Display custom field on single product page
+  function d_extra_product_field() {
+	$value = isset( $_POST['extra_product_field'] ) ? sanitize_text_field( $_POST['extra_product_field'] ) : '';
+	printf( '<label>%s</label><input placeholder="Np. mleko, gluten, orzechy" class="extra_product_field" name="extra_product_field" value="%s" />', __( 'Produkty do wyeliminowania: ' ), esc_attr( $value ) );
+}
+
+
+// validate when add to cart
+function d_extra_field_validation($passed, $product_id, $qty){
+
+	if( isset( $_POST['extra_product_field'] ) && sanitize_text_field( $_POST['extra_product_field'] ) == '' ){
+		$product = wc_get_product( $product_id );
+		wc_add_notice( sprintf( __( '%s cannot be added to the cart until you enter some text.' ), $product->get_title() ), 'error' );
+		return false;
+	}
+	return $passed;
+}
+
+function add_extra_input_field() {
+	global $product;
+	if( get_field("is_custom_diet", $product->get_id())) {
+	//insert actions to add/remove here
+	add_action( 'woocommerce_before_add_to_cart_button', 'd_extra_product_field', 9 );
+	add_filter( 'woocommerce_add_to_cart_validation', 'd_extra_field_validation', 10, 3 );
+	}
+}
+	
+add_action( 'woocommerce_before_single_product', 'add_extra_input_field', 05 );
+
+
+add_filter( 'post_class', 'filter_product_post_class', 10, 3 );
+function filter_product_post_class( $classes, $class, $product_id ){
+    // Only on shop page
+	if( get_field("is_custom_diet", $product_id)) {
+        $classes[] = 'custom_diet_product';
+	}
+
+    return $classes;
+}
+
+
+ // add custom field data in to cart
+function d_add_cart_item_data( $cart_item, $product_id ){
+
+	if( isset( $_POST['extra_product_field'] ) ) {
+		$cart_item['extra_product_field'] = sanitize_text_field( $_POST['extra_product_field'] );
+	}
+
+	return $cart_item;
+
+}
+add_filter( 'woocommerce_add_cart_item_data', 'd_add_cart_item_data', 10, 2 );
+
+// load data from session
+function d_get_cart_data_f_session( $cart_item, $values ) {
+
+	if ( isset( $values['extra_product_field'] ) ){
+		$cart_item['extra_product_field'] = $values['extra_product_field'];
+	}
+	return $cart_item;
+
+}
+add_filter( 'woocommerce_get_cart_item_from_session', 'd_get_cart_data_f_session', 20, 2 );
+
+
+//add meta to order
+function d_add_order_meta( $item_id, $values ) {
+
+	if ( ! empty( $values['extra_product_field'] ) ) {
+		woocommerce_add_order_item_meta( $item_id, 'extra_product_field', $values['extra_product_field'] );           
+	}
+}
+add_action( 'woocommerce_add_order_item_meta', 'd_add_order_meta', 10, 2 );
+
+// display data in cart
+function d_get_itemdata( $other_data, $cart_item ) {
+
+	if ( isset( $cart_item['extra_product_field'] ) ){
+
+		$other_data[] = array(
+			'name' => __( 'Produkty do wyeliminowania' ),
+			'value' => sanitize_text_field( $cart_item['extra_product_field'] )
+		);
+
+	}
+
+	return $other_data;
+
+}
+add_filter( 'woocommerce_get_item_data', 'd_get_itemdata', 10, 2 );
+
+
+// display custom field data in order view
+function d_dis_metadata_order( $cart_item, $order_item ){
+
+	if( isset( $order_item['extra_product_field'] ) ){
+		$cart_item_meta['extra_product_field'] = $order_item['extra_product_field'];
+	}
+
+	return $cart_item;
+
+}
+add_filter( 'woocommerce_order_item_product', 'd_dis_metadata_order', 10, 2 );
+
+
+// add field data in email
+function d_order_email_data( $fields ) { 
+	$fields['extra_product_field'] = __( 'Produkty do wyeliminowania: ' ); 
+	return $fields; 
+} 
+add_filter('woocommerce_email_order_meta_fields', 'd_order_email_data');
+
+// again order
+function d_order_again_meta_data( $cart_item, $order_item, $order ){
+
+	if( isset( $order_item['extra_product_field'] ) ){
+		$cart_item_meta['extra_product_field'] = $order_item['extra_product_field'];
+	}
+
+	return $cart_item;
+
+}
+add_filter( 'woocommerce_order_again_cart_item_data', 'd_order_again_meta_data', 10, 3 );
+
+
+
+add_action( 'woocommerce_after_shop_loop_item', 'echo_product_variations_loop' );
+    
+function echo_product_variations_loop(){
+    global $product;
+    if ( $product->get_type() == 'variable' ) {
+
+
+		echo '<div class="kcal-variations">';
+
+        foreach ( $product->get_available_variations() as $key ) {
+            $attr_string = array();
+
+            foreach ( $key['attributes'] as $attr_name => $attr_value ) {
+                $attr_string[] = $attr_value;
+            }
+            echo '<div class="kcal-variations__variant">' . implode(', ', $attr_string ) . '</div>'; 
+			
+        }
+
+		echo '</div>';
+    }
+}
+
 
 // ---------------------------------------------
 // Remove Cross Sells From Default Position 

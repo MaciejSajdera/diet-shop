@@ -26,12 +26,20 @@ get_header( 'shop' );
  * @hooked woocommerce_breadcrumb - 20
  * @hooked WC_Structured_Data::generate_website_data() - 30
  */
-do_action( 'woocommerce_before_main_content' );
+// do_action( 'woocommerce_before_main_content' );
 
 ?>
-<header class="woocommerce-products-header">
+<header class="woocommerce-products-header common-template__header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+
+		<?php if (!is_product_category()) {
+		echo '<p>Gotowe jadłospisy</p>';
+		}
+
+
+		?>
+
 	<?php endif; ?>
 
 	<?php
@@ -41,7 +49,7 @@ do_action( 'woocommerce_before_main_content' );
 	 * @hooked woocommerce_taxonomy_archive_description - 10
 	 * @hooked woocommerce_product_archive_description - 10
 	 */
-	do_action( 'woocommerce_archive_description' );
+	// do_action( 'woocommerce_archive_description' );
 	?>
 </header>
 
@@ -49,110 +57,99 @@ do_action( 'woocommerce_before_main_content' );
 
 		$body_classes = get_body_class();
 
-	if (is_shop(10) && !in_array('woof_search_is_going', $body_classes) && !in_array('search-results', $body_classes) && !in_array('search-no-results', $body_classes)  )  {
+	if (is_shop(10) && !in_array('search-results', $body_classes) && !in_array('search-no-results', $body_classes)  )  {
 
-		echo '<div class="shop-category-menu>';
+		// echo '<div class="shop-category-menu>';
 
-		wp_nav_menu(
-			array(
-				'theme_location' => 'wooshop-category-grid',
-				'depth' => 1
-			)
-		);
-
-		echo '</div>';
-
-		// $hide_empty = false ;
-		// $cat_args = array(
-		// 	'orderby'    => 'name',
-		// 	'order' => 'ASC',
-		// 	'hide_empty' => $hide_empty,
-		// 	'parent' => 0
+		// wp_nav_menu(
+		// 	array(
+		// 		'theme_location' => 'wooshop-category-grid',
+		// 		'depth' => 1
+		// 	)
 		// );
 
-		// $product_categories = get_terms( 'product_cat', $cat_args );
+		// echo '</div>';
 
-		// if( !empty($product_categories) ){
+		$cat_args = array(
+			'orderby'    => 'name',
+			'order' => 'ASC',
+			'hide_empty' => 'true',
+			'parent' => 0,
+			'orderby'=>"menu_order"
+		);
 
-		// 	echo '<div class="categories-grid shop-grid1">';
+		$product_categories = get_terms( 'product_cat', $cat_args );
 
-		// 	foreach ($product_categories as $key => $category) {
+		if( !empty($product_categories) ){
 
-		// 		$thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
-		// 		$category_name = $category->name;
-		// 		$image = wp_get_attachment_url( $thumbnail_id );
+			echo '<section class="shop">';
 
-		// 		if (!$image) {
-		// 			$image = wc_placeholder_img_src();
-		// 		}
+			echo '<div class="shop-paragraph">' . get_field("shop_paragraph", get_option( 'woocommerce_shop_page_id' )) . '</div>';
 
-		// 		// echo '<a class="brand-tile" href="'.get_term_link($category).'" >';
-		// 		// echo '<p>' .$category_name. '</p>';
-		// 		// echo '<img src="'.$image.'">';
-		// 		// echo '</a>';
+			echo '<div class="shop-grid">';
 
-		// 		echo '<a class="category-tile" href="'.get_term_link($category).'">';
-		// 			echo '<div style="background-image: url('.$image.')";></div>';
-		// 			echo '<p>' .$category_name. '</p>';
-		// 		echo '</a>';
-		// 	}
+			foreach ($product_categories as $key => $category) {
 
-		// 	echo '</div>';
-		// }
+				$thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
+				$category_name = $category->name;
+				$image = wp_get_attachment_url( $thumbnail_id );
+
+				if (!$image) {
+					$image = wc_placeholder_img_src();
+				}
+
+				// echo '<a class="brand-tile" href="'.get_term_link($category).'" >';
+				// echo '<p>' .$category_name. '</p>';
+				// echo '<img src="'.$image.'">';
+				// echo '</a>';
+
+				if (!empty($category)) {
+					echo '<a class="category-tile" href="'.get_term_link($category).'">';
+					echo '<div class="category-tile__image" style="background-image: url('.$image.')";></div>';
+					echo '<p>' .$category_name. '</p>';
+					echo '</a>';
+				}
+
+
+			}
+
+			echo '</div>';
+			echo '</section>';
+		}
 
 	} else  {
 
 
 		if ( is_product_category() ) {
 
-			$term_id  = get_queried_object_id();
-			$taxonomy = 'product_cat';
+			// $term_id  = get_queried_object_id();
+			// $taxonomy = 'product_cat';
 	
-			// Get subcategories of the current category
-			$terms    = get_terms([
-				'taxonomy'    => $taxonomy,
-				'order' => 'ASC',
-				'hide_empty'  => true,
-				'parent'      => $term_id,
-			]);
-
-			$count = sizeof($terms);
-
-			$how_long;
-
-			if ($count <= 10) {
-				$how_long = 'subcategories-list__short';
-			} 
-			elseif ($count > 10) {
-				$how_long = 'subcategories-list__long';
-			} 
+			// // Get subcategories of the current category
+			// $terms    = get_terms([
+			// 	'taxonomy'    => $taxonomy,
+			// 	'order' => 'ASC',
+			// 	'hide_empty'  => true,
+			// 	'parent'      => $term_id,
+			// ]);
 
 
-			echo '<ul class="subcategories-list '. $how_long .'">';
+			echo '<section class="shop__category-description"><div class="shop__category-description__wrapper">' . category_description() . '</div></section>';
+
+			// echo '<ul class="subcategories-list">';
 	
-			// Loop through product subcategories WP_Term Objects
-			foreach ( $terms as $term ) {
-				$term_link = get_term_link( $term, $taxonomy );
+			// // Loop through product subcategories WP_Term Objects
+			// foreach ( $terms as $term ) {
+			// 	$term_link = get_term_link( $term, $taxonomy );
 	
-				echo '<li class="'. $term->slug .'"><a href="'. $term_link .'" class="checkout-button button alt wc-forward my-checkout-button">'. $term->name .'</a></li>';
-			}
+			// 	echo '<li class="'. $term->slug .'"><a href="'. $term_link .'" class="checkout-button button alt wc-forward my-checkout-button">'. $term->name .'</a></li>';
+			// }
 	
-			echo '</ul>';
+			// echo '</ul>';
 		}
 
 		?>
-		<div class="wrapper-flex-column shop-wrapper">
-
-
-			<div class="woof-filter sidebar-filters">
-
-
-			<p id="toggle-filters">Filtry <span class="filters-icon"></span></p>
-
-			<?= get_field('woof_filter', get_option( 'woocommerce_shop_page_id' ) ) ?>
-
-			</div>
-
+		<section class="wrapper-flex-column shop-wrapper">
 
 			<div class="main-shop-products">
 			<?php
@@ -220,7 +217,7 @@ do_action( 'woocommerce_before_main_content' );
 
 			?>
 			</div>
-		</div>
+		</section>
 
 
 	<?php

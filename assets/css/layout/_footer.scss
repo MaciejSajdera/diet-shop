@@ -112,7 +112,7 @@ footer#colophon {
 		input,
 		textarea {
 			color: $color__text-light;
-			background: $background__footer--lighter;
+			background: $background__grey--lighter;
 
 			&::placeholder {
 				color: $color__text-light;
@@ -236,7 +236,7 @@ footer#colophon {
 		}
 
 		span {
-			color: $background__footer--lighter;
+			color: $background__grey--lighter;
 		}
 	}
 }

@@ -102,7 +102,8 @@ body.single-post {
 	height: 100%;
 	background: $color__background-body;
 	display: flex;
-	align-items: center;
+	flex-flow: column;
+	// align-items: center;
 	// justify-content: center;
 	// background: rgba(1, 34, 65, 0.59);
 	// background-image: url(../dist/img/entry-header.jpg); /* fallback */
@@ -116,11 +117,12 @@ body.single-post {
 	background-position: center;
 	background-repeat: no-repeat;
 	position: relative;
+	justify-content: center;
 
 	@media screen and (min-width: 992px) {
 		padding: 2em 10%;
-		justify-content: flex-start;
-		height: 12rem;
+		// justify-content: flex-start;
+		min-height: 12rem;
 	}
 
 	h1 {
@@ -128,8 +130,9 @@ body.single-post {
 		// padding: 3em 0 0;
 		line-height: 1.2;
 		margin: 0;
+		margin-top: 1em;
 		@include fluid-type($min_width, $max_width, 46px, 46px);
-		align-self: flex-end;
+		// align-self: flex-end;
 		position: relative;
 
 		@media screen and (min-width: 992px) {
@@ -152,6 +155,20 @@ body.single-post {
 			// @media screen and (max-width: 992px) {
 			// 	margin: auto;
 			// }
+		}
+	}
+
+	p {
+		@include fluid-type($min_width, $max_width, 38px, 42px);
+		margin-top: 0.5em;
+		margin-bottom: 1em;
+
+		@media screen and (min-width: 992px) {
+			padding: 0rem 4rem 0;
+		}
+
+		@media screen and (min-width: 1500px) {
+			max-width: 70%;
 		}
 	}
 }
@@ -219,7 +236,7 @@ header.wholesale-header {
 
 	a {
 		font-weight: 600;
-		color: $color_dark_blue;
+		color: $background__main-theme--green;
 		@include fluid-type($min_width, $max_width, 18px, 22px);
 	}
 }
@@ -612,7 +629,7 @@ p.common-page-subheader {
 		text-align: center;
 		display: flex;
 		flex-flow: column;
-		color: $color_dark_blue;
+		color: $background__main-theme--green;
 		@include fluid-type($min_width, $max_width, 22px, 24px);
 		z-index: 1;
 		font-weight: 600;
@@ -734,7 +751,7 @@ p.common-page-subheader {
 	grid-template-rows: auto;
 
 	@media screen and (min-width: 992px) {
-		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 }
 
@@ -744,10 +761,10 @@ p.common-page-subheader {
 	grid-row-gap: 2em;
 	grid-column-gap: 2em;
 	margin: 2em 0;
-	padding-bottom: 2em;
+	// padding-bottom: 2em;
 	justify-content: center;
 	list-style: none;
-	padding-left: 0;
+	// padding-left: 0;
 }
 
 .brand-tile {
@@ -770,7 +787,7 @@ p.common-page-subheader {
 	}
 
 	&:hover {
-		border: 2px solid $color_dark_blue;
+		border: 2px solid $background__main-theme--green;
 		border-radius: 10px;
 		box-shadow: 0px 0px 15px 0px rgb(32 91 171 / 35%);
 	}
