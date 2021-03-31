@@ -56,7 +56,7 @@
 .shop-grid {
 	width: 100%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	flex-wrap: wrap;
 }
 
@@ -64,8 +64,7 @@
 	padding-bottom: 4em;
 }
 
-.price-box,
-.category-tile {
+.price-box {
 	display: flex;
 	flex-flow: column;
 	// justify-content: center;

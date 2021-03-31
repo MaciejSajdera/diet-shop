@@ -110,8 +110,11 @@
 			}
 
 			.wpcf7-submit {
-				max-width: 40%;
 				margin: auto;
+
+				@media screen and (min-width: 992px) {
+					max-width: 40%;
+				}
 			}
 
 			textarea,

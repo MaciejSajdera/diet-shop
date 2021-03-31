@@ -18,14 +18,14 @@
 	}
 }
 
-#add_payment_method .wc-proceed-to-checkout a.checkout-button,
-.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
-.woocommerce-checkout .wc-proceed-to-checkout a.my-checkout-button,
-.woocommerce #respond input#submit,
-.woocommerce button.button,
-.woocommerce input.button.my-checkout-button {
-	@include fluid-type($min_width, $max_width, 14px, 20px);
-}
+// #add_payment_method .wc-proceed-to-checkout a.checkout-button,
+// .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+// .woocommerce-checkout .wc-proceed-to-checkout a.my-checkout-button,
+// .woocommerce #respond input#submit,
+// .woocommerce button.button,
+// .woocommerce input.button.my-checkout-button {
+// 	@include fluid-type($min_width, $max_width, 14px, 20px);
+// }
 
 .woocommerce-message {
 	@media screen and (max-width: 992px) {
@@ -190,6 +190,27 @@
 	}
 }
 
+.my-submit-button {
+	background-color: $background__grey--lighter !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+	color: $color__text-light !important;
+	width: 70% !important;
+	display: block;
+	margin: 1em !important;
+	font-family: $font_headers;
+	padding: 0.75em 1.5em !important;
+	transition: all 0.2s ease-in;
+	outline: none !important;
+	float: none !important;
+	cursor: pointer;
+
+	&:hover {
+		color: $background__main-theme--green !important;
+		background-color: transparent !important;
+	}
+}
+
 // .wpcf7-submit {
 // 	background-color: $color_baby_blue !important;
 // 	border: 0 !important;
@@ -249,7 +270,7 @@
 }
 
 .my-nav-button {
-	background-color: $color-my-dark-navy !important;
+	background-color: $background__grey--lighter !important;
 	border: 0 !important;
 	border-radius: 0 !important;
 	color: $color__text-light !important;
@@ -262,28 +283,32 @@
 	outline: none !important;
 
 	&:hover {
-		color: $color-my-dark-navy !important;
-		background-color: $color__text-light !important;
+		color: $background__grey--lighter !important;
+		background-color: transparent !important;
 	}
 }
 
 .button-outline-navy {
 	background-color: transparent !important;
-	border: 1px solid $color-my-dark-navy !important;
+	border: 1px solid $color-my-dark-green !important;
 	border-radius: 0 !important;
-	color: $color-my-dark-navy !important;
+	color: $color-my-dark-green !important;
 	// width: 70%;
 	display: block;
-	// margin: 1em !important;
+
 	font-family: $font_headers;
 	padding: 0.5em 1em !important;
 	transition: all 0.2s ease-in;
 	outline: none !important;
-	@include fluid-type($min_width, $max_width, 11px, 14px);
+	@include fluid-type($min_width, $max_width, 16px, 18px);
+
+	@media screen and (max-width: 992px) {
+		margin-top: 2em !important;
+	}
 
 	&:hover {
 		color: $color__text-light !important;
-		background-color: $color-my-dark-navy !important;
+		background-color: $color-my-dark-green !important;
 	}
 }
 
@@ -325,11 +350,11 @@ input:-webkit-autofill:active {
 
 	&:hover {
 		background-color: white;
-		color: $color-my-dark-navy;
+		color: $color-my-dark-green;
 		border: 1px solid white;
 
 		svg {
-			fill: $color-my-dark-navy;
+			fill: $color-my-dark-green;
 		}
 	}
 
@@ -344,11 +369,11 @@ input:-webkit-autofill:active {
 
 .customer-type-chosen {
 	background-color: white;
-	color: $color-my-dark-navy;
+	color: $color-my-dark-green;
 	border: 1px solid white;
 
 	svg {
-		fill: $color-my-dark-navy;
+		fill: $color-my-dark-green;
 	}
 }
 
@@ -395,7 +420,7 @@ input:-webkit-autofill:active {
 	align-items: center;
 	text-align: center;
 	justify-content: center;
-	@include fluid-type($min_width, $max_width, 16px, 18px);
+	// @include fluid-type($min_width, $max_width, 16px, 18px);
 
 	@media screen and (max-width: 992px) {
 		width: 100%;
@@ -704,4 +729,9 @@ button:disabled {
 	// 		}
 	// 	}
 	// }
+}
+
+.woocommerce-Button {
+	margin: auto !important;
+	float: none;
 }

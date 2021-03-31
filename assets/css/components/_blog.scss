@@ -331,7 +331,7 @@ body.blog {
 		}
 
 		@media screen and (min-width: 1200px) {
-			padding: 0 3em;
+			// padding: 0 3em;
 			align-items: flex-start;
 		}
 
@@ -360,7 +360,7 @@ body.blog {
 }
 
 .post-navigation {
-	width: 80%;
+	width: 100%;
 	margin: 5em auto 0;
 	display: flex;
 	flex-flow: row;
@@ -368,9 +368,9 @@ body.blog {
 	justify-content: space-between;
 	transition: all 0.3s ease-in;
 
-	@media screen and (max-width: 992px) {
-		width: 70%;
-	}
+	// @media screen and (max-width: 992px) {
+	// 	width: 70%;
+	// }
 
 	div {
 		display: flex;

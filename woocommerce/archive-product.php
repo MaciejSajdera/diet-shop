@@ -93,6 +93,7 @@ get_header( 'shop' );
 				$thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
 				$category_name = $category->name;
 				$image = wp_get_attachment_url( $thumbnail_id );
+				$short_description = get_field('category_short_description', $category);
 
 				if (!$image) {
 					$image = wc_placeholder_img_src();
@@ -106,7 +107,18 @@ get_header( 'shop' );
 				if (!empty($category)) {
 					echo '<a class="category-tile" href="'.get_term_link($category).'">';
 					echo '<div class="category-tile__image" style="background-image: url('.$image.')";></div>';
-					echo '<p>' .$category_name. '</p>';
+
+					echo '<div class="category-tile__text-wrapper">';
+					echo '<p class="category-tile__name">' .$category_name. '</p>';
+					// if (strlen($short_description) > 0) {
+						echo '<p class="category-tile__short-description">' .$short_description. '</p>';
+					// }
+					echo '</div>';
+
+					// if (get_field('category_short_description', $category->term_id)) {
+					// 	echo '<p class="category_short_description">' . get_field('category_short_description', $category->term_id) . '</p>';
+					// }
+
 					echo '</a>';
 				}
 

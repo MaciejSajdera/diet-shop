@@ -18,14 +18,14 @@ window.addEventListener("DOMContentLoaded", event => {
 			let markers = [["Kielce, Staszica 14a", 54.402111, 18.5886565]];
 
 			// Info Window Content
-			let infoWindowContent = [
-				[
-					'<div class="info_content">' +
-						'<img width="200" height="71" src="https://blossomitdev.usermd.net/wp-content/uploads/2020/11/cropped-venus-logo.png" class="custom-logo" alt="Venus Hurtownia Fryzjersko – Kosmetyczna" srcset="https://blossomitdev.usermd.net/wp-content/uploads/2020/11/cropped-venus-logo.png 200w, https://blossomitdev.usermd.net/wp-content/uploads/2020/11/cropped-venus-logo-64x23.png 64w" sizes="(max-width: 200px) 100vw, 200px">' +
-						"<h3>Venus, Kielce, Staszica 14a</h3>" +
-						"</div>"
-				]
-			];
+			// let infoWindowContent = [
+			// 	[
+			// 		'<div class="info_content">' +
+			// 			'<img width="200" height="71" src="https://blossomitdev.usermd.net/wp-content/uploads/2020/11/cropped-venus-logo.png" class="custom-logo" alt="JL Poradnia" srcset="https://blossomitdev.usermd.net/wp-content/uploads/2020/11/cropped-venus-logo.png 200w, https://blossomitdev.usermd.net/wp-content/uploads/2020/11/cropped-venus-logo-64x23.png 64w" sizes="(max-width: 200px) 100vw, 200px">' +
+			// 			"<h3>Venus, Kielce, Staszica 14a</h3>" +
+			// 			"</div>"
+			// 	]
+			// ];
 
 			// Display multiple markers on a map
 			let infoWindow = new google.maps.InfoWindow(),

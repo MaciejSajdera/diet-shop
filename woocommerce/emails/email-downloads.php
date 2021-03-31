@@ -41,12 +41,12 @@ $text_align = is_rtl() ? 'right' : 'left';
 						switch ( $column_id ) {
 							case 'download-product':
 								?>
-								<a href="<?php echo esc_url( get_permalink( $download['product_id'] ) ); ?>"><?php echo wp_kses_post( $download['product_name'] ); ?></a>
+								<a href="<?php echo esc_url( get_permalink( $download['product_id'] ) ); ?>" target="_blank"><?php echo wp_kses_post( $download['product_name'] ); ?></a>
 								<?php
 								break;
 							case 'download-file':
 								?>
-								<a href="<?php echo esc_url( $download['download_url'] ); ?>" class="woocommerce-MyAccount-downloads-file button alt"><?php echo esc_html( $download['download_name'] ); ?></a>
+								<a href="<?php echo esc_url( $download['download_url'] ); ?>" class="woocommerce-MyAccount-downloads-file button alt" target="_blank"><?php echo esc_html( $download['download_name'] ); ?></a>
 								<?php
 								break;
 							case 'download-expires':

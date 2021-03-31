@@ -44,13 +44,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 							switch ( $column_id ) {
 								case 'download-product':
 									if ( $download['product_url'] ) {
-										echo '<a href="' . esc_url( $download['product_url'] ) . '">' . esc_html( $download['product_name'] ) . '</a>';
+										echo '<a href="' . esc_url( $download['product_url'] ) . '" target="_blank">' . esc_html( $download['product_name'] ) . '</a>';
 									} else {
 										echo esc_html( $download['product_name'] );
 									}
 									break;
 								case 'download-file':
-									echo '<a href="' . esc_url( $download['download_url'] ) . '" class="woocommerce-MyAccount-downloads-file button alt">' . esc_html( $download['download_name'] ) . '</a>';
+									echo '<a href="' . esc_url( $download['download_url'] ) . '" class="woocommerce-MyAccount-downloads-file button alt green-button" target="_blank">' . esc_html( $download['download_name'] ) . '</a>';
 									break;
 								case 'download-remaining':
 									echo is_numeric( $download['downloads_remaining'] ) ? esc_html( $download['downloads_remaining'] ) : esc_html__( '&infin;', 'woocommerce' );

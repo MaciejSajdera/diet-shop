@@ -12,3 +12,35 @@
 .woocommerce-message {
 	z-index: 9;
 }
+
+.woocommerce-info {
+	border-top-color: $background__button-green;
+
+	&:before {
+		content: "";
+	}
+
+	.add_to_cart_button {
+		margin-top: 1em !important;
+	}
+}
+
+.woocommerce-password-strength.short {
+	background-color: #e35b5b;
+	border-color: #e35b5b;
+}
+
+.woocommerce-password-strength.bad {
+	background-color: #ffad48;
+	border-color: #ffad48;
+}
+
+.woocommerce-password-strength.good {
+	background-color: #56b4a2;
+	border-color: #56b4a2;
+}
+
+.woocommerce-password-strength.strong {
+	background-color: #4dcb62;
+	border-color: #4dcb62;
+}

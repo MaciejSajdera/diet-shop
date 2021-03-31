@@ -522,7 +522,11 @@ ul.sub-menu {
 	}
 
 	@media screen and (min-width: 1200px) {
-		width: 70%;
+		width: 80%;
+	}
+
+	@media screen and (min-width: 1500px) {
+		width: 75%;
 	}
 
 	ul.menu {
@@ -1348,6 +1352,18 @@ body.home {
 	}
 }
 
+.home {
+	.shop-nav {
+		&__item {
+			svg {
+				path {
+					fill: #fff;
+				}
+			}
+		}
+	}
+}
+
 .sub-icon-text {
 	position: absolute;
 	bottom: -1.5em;
@@ -1426,6 +1442,15 @@ body.woocommerce-account {
 
 		svg path:nth-of-type(2) {
 			fill: #ccc;
+		}
+	}
+
+	.woocommerce-Message {
+		display: flex;
+		flex-flow: column;
+
+		.woocommerce-Button {
+			margin-top: 1em !important;
 		}
 	}
 }

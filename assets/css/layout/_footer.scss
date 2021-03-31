@@ -129,6 +129,7 @@ footer#colophon {
 			border-color: $color__text-light;
 			border-radius: 100rem;
 			padding: 1em 1.75em !important;
+			margin: auto !important;
 
 			width: 70%;
 			margin-right: 100%;
@@ -147,7 +148,7 @@ footer#colophon {
 			&:active,
 			&:focus {
 				background: $color__text-light;
-				color: $background__main-theme--green !important;
+				// color: $background__main-theme--green !important;
 				border-color: $color__text-light;
 
 				// svg {

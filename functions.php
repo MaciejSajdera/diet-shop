@@ -403,80 +403,80 @@ function wc_register_form_password_repeat() {
 }
 
 
-function wholeseller_role_cat( $q ) {
+// function wholeseller_role_cat( $q ) {
 
-    // Get the current user
-    $current_user = wp_get_current_user();
+//     // Get the current user
+//     $current_user = wp_get_current_user();
 
-    if ( in_array( 'wholesale_customer', $current_user->roles ) ) {
-        // Set here the ID for Wholesale category 
+//     if ( in_array( 'wholesale_customer', $current_user->roles ) ) {
+//         // Set here the ID for Wholesale category 
 
-		add_filter( 'woocommerce_get_price_html', 'info_for_whosale', 9999, 2 );
+// 		add_filter( 'woocommerce_get_price_html', 'info_for_whosale', 9999, 2 );
  
-		function info_for_whosale( $price, $product ){
+// 		function info_for_whosale( $price, $product ){
 		 
-		if ( '' === $product->get_price() || 0 == $product->get_price() ) {
+// 		if ( '' === $product->get_price() || 0 == $product->get_price() ) {
 		 
-		$price = '<span class="tylko dla wholesale"></span>';
+// 		$price = '<span class="tylko dla wholesale"></span>';
 		 
-		}
+// 		}
 		
-		return $price;
+// 		return $price;
 		
-		}
+// 		}
 
-    } else {
+//     } else {
 
-		$meta_query = $q->get( 'meta_query' );
+// 		$meta_query = $q->get( 'meta_query' );
  
-        $meta_query[] = array(
+//         $meta_query[] = array(
  
-                    'key'       => '_price',
+//                     'key'       => '_price',
  
-                    'value'     => 0,
+//                     'value'     => 0,
  
-                    'compare'   => '>'
+//                     'compare'   => '>'
  
-                );
-    $q->set( 'meta_query', $meta_query );
+//                 );
+//     $q->set( 'meta_query', $meta_query );
 
-    }
-}
-add_action( 'woocommerce_product_query', 'wholeseller_role_cat' );
+//     }
+// }
+// add_action( 'woocommerce_product_query', 'wholeseller_role_cat' );
 
 
 //custom input fields in woocommerce registration form when wholesale customer creates account
 
-add_action( 'woocommerce_register_form', 'add_custom_register_form_fields' );
+// add_action( 'woocommerce_register_form', 'add_custom_register_form_fields' );
 
-function add_custom_register_form_fields() {
+// function add_custom_register_form_fields() {
 
-	woocommerce_form_field(
+// 	woocommerce_form_field(
 
-		'billing_company',
+// 		'billing_company',
 
-		array(
-			'type'        => 'text',
-			'required'    => true, // just adds an "*"
-			'label'       => 'Nazwa Firmy',
-			'class' => array('my-custom-form-field'),
-		),
-		( isset($_POST['billing_company']) ? $_POST['billing_company'] : '' )
-	);
+// 		array(
+// 			'type'        => 'text',
+// 			'required'    => true, // just adds an "*"
+// 			'label'       => 'Nazwa Firmy',
+// 			'class' => array('my-custom-form-field'),
+// 		),
+// 		( isset($_POST['billing_company']) ? $_POST['billing_company'] : '' )
+// 	);
  
-	woocommerce_form_field(
+// 	woocommerce_form_field(
 
-		'billing_vat',
+// 		'billing_vat',
 
-		array(
-			'type'        => 'text',
-			'required'    => true, // just adds an "*"
-			'label'       => 'Numer NIP',
-			'class' => array('my-custom-form-field'),
-		),
-		( isset($_POST['billing_vat']) ? $_POST['billing_vat'] : '' )
-	);
-}
+// 		array(
+// 			'type'        => 'text',
+// 			'required'    => true, // just adds an "*"
+// 			'label'       => 'Numer NIP',
+// 			'class' => array('my-custom-form-field'),
+// 		),
+// 		( isset($_POST['billing_vat']) ? $_POST['billing_vat'] : '' )
+// 	);
+// }
 
 
 // add_action( 'woocommerce_register_post', 'validate_custom_form_fields', 10, 3 );
@@ -490,35 +490,55 @@ function add_custom_register_form_fields() {
 // }
 
 
-add_action( 'woocommerce_created_customer', 'save_register_fields_to_database' );
+// add_action( 'woocommerce_created_customer', 'save_register_fields_to_database' );
  
-function save_register_fields_to_database( $customer_id ){
+// function save_register_fields_to_database( $customer_id ){
  
-	if ( isset( $_POST['billing_vat'] ) ) {
-		update_user_meta( $customer_id, 'billing_vat', wc_clean( $_POST['billing_vat'] ) );
-	}
+// 	if ( isset( $_POST['billing_vat'] ) ) {
+// 		update_user_meta( $customer_id, 'billing_vat', wc_clean( $_POST['billing_vat'] ) );
+// 	}
 
-	if ( isset( $_POST['billing_company'] ) ) {
-		update_user_meta( $customer_id, 'billing_company', wc_clean( $_POST['billing_company'] ) );
-	}
+// 	if ( isset( $_POST['billing_company'] ) ) {
+// 		update_user_meta( $customer_id, 'billing_company', wc_clean( $_POST['billing_company'] ) );
+// 	}
+// }
+
+add_action( 'woocommerce_account_downloads_columns', 'custom_downloads_columns', 10, 1 ); // Orders and account
+add_action( 'woocommerce_email_downloads_columns', 'custom_downloads_columns', 10, 1 ); // Email notifications
+function custom_downloads_columns( $columns ){
+    // Removing "Download expires" column
+    if(isset($columns['download-expires']))
+        unset($columns['download-expires']);
+
+    // Removing "Download remaining" column
+    if(isset($columns['download-remaining']))
+        unset($columns['download-remaining']);
+
+    return $columns;
 }
 
-//change myaccount endpoints
+// change myaccount endpoints
 // function wpb_woo_my_account_order() {
 // 	$myorder = array(
-// 		'my-custom-endpoint' => __( 'My Stuff', 'woocommerce' ),
+// 		// 'my-custom-endpoint' => __( 'My Stuff', 'woocommerce' ),
 // 		'edit-account'       => __( 'Change My Details', 'woocommerce' ),
 // 		'dashboard'          => __( 'Dashboard', 'woocommerce' ),
 // 		'orders'             => __( 'Orders', 'woocommerce' ),
-// 		'downloads'          => __( 'Download MP4s', 'woocommerce' ),
-// 		'edit-address'       => __( 'Addresses', 'woocommerce' ),
-// 		'payment-methods'    => __( 'Payment Methods', 'woocommerce' ),
+// 		// 'downloads'          => __( 'Download MP4s', 'woocommerce' ),
+// 		// 'edit-address'       => __( 'Addresses', 'woocommerce' ),
+// 		// 'payment-methods'    => __( 'Payment Methods', 'woocommerce' ),
 // 		'customer-logout'    => __( 'Logout', 'woocommerce' ),
 // 	);
 
 // 	return $myorder;
 // }
 // add_filter ( 'woocommerce_account_menu_items', 'wpb_woo_my_account_order' );
+
+// function custom_my_account_menu_items( $items ) {
+//     unset($items['downloads']);
+//     return $items;
+// }
+// add_filter( 'woocommerce_account_menu_items', 'custom_my_account_menu_items' );
 
 
 /**
@@ -537,27 +557,9 @@ function custom_wp_new_user_notification_email( $wp_new_user_notification_email,
 	
 	$user_count = count_users();
 
-	$my_tax_data = get_user_meta( $user->ID, 'billing_vat', true );
-	$my_company_data = get_user_meta( $user->ID, 'billing_company', true );
-
-	if ($my_tax_data) {
-		$user_role = 'hurtowy';
-	} else {
-		$user_role = 'detaliczny';
-	};
-
-	if ($my_company_data) {
-		$company = "\n" . sprintf("Firma: %s ", $my_company_data) .
-		"\n" . sprintf("NIP: %s ", $my_tax_data) .
-		"\n" . "Pamiętaj by po weryfikacji aktywować ceny hurtowe dla tego kontrahenta.";
-	} else {
-		$company = "\n";
-	};
-
     $wp_new_user_notification_email['subject'] = sprintf( '[%s] Nowy użytkownik %s .', $blogname, $user_role, $user->user_login );
-    $wp_new_user_notification_email['message'] = sprintf( "%s ( %s ) zarejestrował się w Twoim sklepie %s.", $user->user_login, $user->user_email, $blogname ) .
-	"\n" . sprintf("Rodzaj użytkownika: %s ", $user_role) .
-	$company .
+    $wp_new_user_notification_email['message'] = sprintf( "%s ( %s ) zarejestrował się w Twoim sklepie %s.", $user->user_login, $user->user_email, $blogname );
+
 	"\n" . sprintf("Gratulacje, to twój %d zarejestrowany użytkownik!", $user_count['total_users']);
     return $wp_new_user_notification_email;
 }
@@ -711,22 +713,14 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
 		width="92px" height="92px" viewBox="0 0 92 92" enable-background="new 0 0 92 92" xml:space="preserve">
 
 		<?php
-		if (is_home()) {
 
-			echo '<path fill="#fff" id="XMLID_1732_" d="M91.8,27.3L81.1,61c-0.8,2.4-2.9,4-5.4,4H34.4c-2.4,0-4.7-1.5-5.5-3.7L13.1,19H4c-2.2,0-4-1.8-4-4
-			s1.8-4,4-4h11.9c1.7,0,3.2,1.1,3.8,2.7L36,57h38l8.5-27H35.4c-2.2,0-4-1.8-4-4s1.8-4,4-4H88c1.3,0,2.5,0.7,3.2,1.7
-			C92,24.7,92.2,26.1,91.8,27.3z M36.4,70.3c-1.7,0-3.4,0.7-4.6,1.9c-1.2,1.2-1.9,2.9-1.9,4.6c0,1.7,0.7,3.4,1.9,4.6
-			c1.2,1.2,2.9,1.9,4.6,1.9s3.4-0.7,4.6-1.9c1.2-1.2,1.9-2.9,1.9-4.6c0-1.7-0.7-3.4-1.9-4.6C39.8,71,38.1,70.3,36.4,70.3z M72.3,70.3
-			c-1.7,0-3.4,0.7-4.6,1.9s-1.9,2.9-1.9,4.6c0,1.7,0.7,3.4,1.9,4.6c1.2,1.2,2.9,1.9,4.6,1.9c1.7,0,3.4-0.7,4.6-1.9
-			c1.2-1.2,1.9-2.9,1.9-4.6c0-1.7-0.7-3.4-1.9-4.6S74,70.3,72.3,70.3z"/>';
-		} else {
 			echo '<path fill="#000" id="XMLID_1732_" d="M91.8,27.3L81.1,61c-0.8,2.4-2.9,4-5.4,4H34.4c-2.4,0-4.7-1.5-5.5-3.7L13.1,19H4c-2.2,0-4-1.8-4-4
 			s1.8-4,4-4h11.9c1.7,0,3.2,1.1,3.8,2.7L36,57h38l8.5-27H35.4c-2.2,0-4-1.8-4-4s1.8-4,4-4H88c1.3,0,2.5,0.7,3.2,1.7
 			C92,24.7,92.2,26.1,91.8,27.3z M36.4,70.3c-1.7,0-3.4,0.7-4.6,1.9c-1.2,1.2-1.9,2.9-1.9,4.6c0,1.7,0.7,3.4,1.9,4.6
 			c1.2,1.2,2.9,1.9,4.6,1.9s3.4-0.7,4.6-1.9c1.2-1.2,1.9-2.9,1.9-4.6c0-1.7-0.7-3.4-1.9-4.6C39.8,71,38.1,70.3,36.4,70.3z M72.3,70.3
 			c-1.7,0-3.4,0.7-4.6,1.9s-1.9,2.9-1.9,4.6c0,1.7,0.7,3.4,1.9,4.6c1.2,1.2,2.9,1.9,4.6,1.9c1.7,0,3.4-0.7,4.6-1.9
 			c1.2-1.2,1.9-2.9,1.9-4.6c0-1.7-0.7-3.4-1.9-4.6S74,70.3,72.3,70.3z"/>';
-		}
+
 		?>
 		</svg>
 		
@@ -1053,6 +1047,10 @@ function filter_product_post_class( $classes, $class, $product_id ){
     // Only on shop page
 	if( get_field("is_custom_diet", $product_id)) {
         $classes[] = 'custom_diet_product';
+	}
+
+	if( get_field("is_gift_card", $product_id)) {
+        $classes[] = 'gift_card_product';
 	}
 
     return $classes;

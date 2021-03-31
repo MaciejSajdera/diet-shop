@@ -131,9 +131,10 @@ body.single-post {
 		line-height: 1.2;
 		margin: 0;
 		margin-top: 1em;
-		@include fluid-type($min_width, $max_width, 46px, 46px);
+		@include fluid-type($min_width, $max_width, 36px, 46px);
 		// align-self: flex-end;
 		position: relative;
+		word-break: break-word;
 
 		@media screen and (min-width: 992px) {
 			padding: 0rem 4rem 0;
@@ -381,6 +382,14 @@ header.wholesale-header {
 			width: 20px;
 		}
 
+		:nth-child(7) {
+			text-align: center;
+
+			.ajax-loader {
+				margin-top: 1em;
+			}
+		}
+
 		:nth-child(6) {
 			// border: 1px solid red;
 			label {
@@ -390,6 +399,7 @@ header.wholesale-header {
 
 				@media screen and (max-width: 992px) {
 					flex-flow: column;
+					text-align: center;
 
 					.wpcf7-list-item {
 						margin: 0;
@@ -401,6 +411,59 @@ header.wholesale-header {
 				margin-left: 0;
 				margin-right: 1em;
 				cursor: pointer;
+
+				input[type="checkbox"] {
+					position: relative;
+					cursor: pointer;
+					padding: 0;
+					margin-right: 10px;
+					width: 10px;
+					height: 10px;
+
+					&:focus {
+						outline: none;
+					}
+				}
+
+				input[type="checkbox"]:before {
+					content: "";
+					margin-right: 10px;
+					display: inline-block;
+					margin-top: -2px;
+					width: 20px;
+					height: 20px;
+					background: $color__background-body;
+					border: none;
+				}
+
+				input[type="checkbox"]:checked:before {
+					background: $background__main-theme--green;
+					border-color: $color__background-body;
+				}
+				input[type="checkbox"]:disabled {
+					color: $background__main-theme--green;
+					cursor: auto;
+				}
+				input[type="checkbox"]:disabled:before {
+					box-shadow: none;
+					background: $background__main-theme--green;
+				}
+				input[type="checkbox"]:checked:after {
+					content: "";
+					position: absolute;
+					left: 5px;
+					top: 7px;
+
+					background: $color__background-body;
+					width: 2px;
+					height: 2px;
+					box-shadow: 2px 0 0 $color__background-body,
+						4px 0 0 $color__background-body, 4px -2px 0 $color__background-body,
+						4px -4px 0 $color__background-body,
+						4px -6px 0 $color__background-body,
+						4px -8px 0 $color__background-body;
+					transform: rotate(45deg);
+				}
 			}
 		}
 
@@ -503,6 +566,7 @@ header.wholesale-header {
 
 		.offer-text {
 			@include fluid-type($min_width, $max_width, 12px, 14px);
+			word-break: break-word;
 		}
 	}
 }
@@ -560,6 +624,7 @@ header.wholesale-header {
 			font-weight: 600;
 			margin-top: 0;
 			width: 100%;
+			word-break: break-word;
 
 			@media screen and (min-width: 992px) {
 				padding: 1em 2em;
@@ -830,7 +895,7 @@ p.common-page-subheader {
 	align-items: center;
 
 	.filler-logo {
-		background-image: url(../dist/img/venus-logo.PNG) !important;
+		// background-image: url(../dist/img/venus-logo.PNG) !important;
 		width: 20em;
 		height: 5em;
 		background-size: contain;
@@ -877,6 +942,17 @@ p.common-page-subheader {
 				margin-left: 0em;
 				// padding-left: 10px;
 			}
+		}
+	}
+}
+
+.single-post {
+	article {
+		padding: 0 10% 1em;
+		margin: 6em auto;
+
+		.post-content {
+			margin-right: 3em;
 		}
 	}
 }

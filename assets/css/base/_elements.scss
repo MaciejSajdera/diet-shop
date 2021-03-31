@@ -231,15 +231,21 @@ input[type="checkbox"] {
 	width: 100%;
 	display: flex;
 	justify-content: space-around;
+	align-self: center;
 	margin: 3em auto 6em auto;
+
 	@media screen and (max-width: 992px) {
 		margin: 3em auto 2em auto;
 	}
 
+	// @media screen and (min-width: 992px) {
+	// 	width: 70%;
+	// }
+
 	a {
 		position: relative;
-		font-weight: 800;
-		color: $color_baby_blue;
+		font-weight: 700;
+		color: $background__button-green;
 		font-family: $font_headers;
 		@include fluid-type($min_width, $max_width, 12px, 14px);
 
@@ -255,7 +261,7 @@ input[type="checkbox"] {
 			line-height: 36px;
 			width: 40px;
 			height: 40px;
-			border: 2px solid $color_baby_blue;
+			border: 2px solid $background__button-green;
 			border-radius: 100%;
 			left: 50%;
 			transform: translate(-50%, 0);
@@ -477,10 +483,12 @@ div.woof_info_popup {
 	}
 }
 
-.woocommerce-form-login {
-	.required {
-		color: $color__text-light !important;
-	}
+// .woocommerce-form-login {
+
+// }
+
+.required {
+	color: $color__text-light !important;
 }
 
 .scrollToTopBtn {
