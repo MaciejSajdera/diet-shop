@@ -13,13 +13,19 @@
 }
 
 .blog-feed-wrapper {
+	@media screen and (max-width: 992px) {
+		// display: flex;
+		// flex-flow: column;
+		// width: 100%;
+		position: relative;
+	}
+
 	@media screen and (min-width: 992px) {
 		width: 70%;
 	}
 
 	.swiper-button-prev,
 	.swiper-button-next {
-		position: static !important;
 		margin: 1em auto;
 		width: 50px;
 		height: 50px;
@@ -27,14 +33,20 @@
 		border-radius: 100% !important;
 		padding: 0 !important;
 
+		@media screen and (max-width: 992px) {
+			bottom: -2em;
+			top: 100% !important;
+		}
+
 		@media screen and (min-width: 992px) {
 			margin: 3em auto 1em;
+			position: static !important;
 		}
 
 		span {
 			&:after {
-				right: auto;
 				transform: translate(-50%, -50%);
+				right: auto;
 				top: 50%;
 				left: 50%;
 			}
@@ -47,38 +59,74 @@
 	}
 
 	.swiper-button-next {
+		@media screen and (max-width: 992px) {
+			right: 2em;
+		}
+
 		span {
 			&:after {
 				border-top: 0px solid transparent;
 				border-bottom: 8px solid #fff;
 				border-left: 8px solid transparent;
 				border-right: 8px solid transparent;
+
+				@media screen and (max-width: 992px) {
+					transform: translate(calc(-50% + 2px), -50%);
+					border-top: 8px solid transparent;
+					border-bottom: 8px solid transparent;
+					border-left: 8px solid #fff;
+					border-right: 0px solid transparent;
+				}
 			}
 		}
 
 		&:hover {
 			span {
 				&:after {
-					border-bottom: 8px solid $background__button-green;
+					@media screen and (max-width: 992px) {
+						border-left: 8px solid $background__button-green;
+					}
+
+					@media screen and (min-width: 992px) {
+						border-bottom: 8px solid $background__button-green;
+					}
 				}
 			}
 		}
 	}
 
 	.swiper-button-prev {
+		@media screen and (max-width: 992px) {
+			left: 2em;
+		}
+
 		span {
 			&:after {
 				border-top: 8px solid #fff;
 				border-bottom: 0px solid transparent;
 				border-left: 8px solid transparent;
 				border-right: 8px solid transparent;
+
+				@media screen and (max-width: 992px) {
+					transform: translate(calc(-50% - 2px), -50%);
+					border-top: 8px solid transparent;
+					border-bottom: 8px solid transparent;
+					border-right: 8px solid #fff;
+					border-left: 0px solid transparent;
+				}
 			}
 		}
 
 		&:hover {
 			span {
 				&:after {
-					border-top: 8px solid $background__button-green;
+					@media screen and (max-width: 992px) {
+						border-right: 8px solid $background__button-green;
+					}
+
+					@media screen and (min-width: 992px) {
+						border-top: 8px solid $background__button-green;
+					}
 				}
 			}
 		}
@@ -88,6 +136,7 @@
 .blog-grid {
 	display: flex;
 	flex-flow: column;
+
 	padding: 2rem !important;
 
 	@media screen and (min-width: 992px) {
@@ -151,9 +200,15 @@
 	}
 }
 
-body.blog {
+body.blog,
+body.category {
 	.swiper-container-blog-posts-blog {
-		max-height: 1600px !important;
+		// min-height: 400px;
+		max-height: 800px !important;
+		@media screen and (min-width: 992px) {
+			// height: 100%;
+			max-height: 1600px !important;
+		}
 	}
 
 	.post-wrapper {
@@ -170,8 +225,13 @@ body.blog {
 		// margin: 1em;
 		width: auto;
 		flex-flow: column;
+		min-height: 300px;
+
+		// height: 25% !important;
 
 		@media screen and (max-width: 992px) {
+			height: auto !important;
+
 			.post-upper-wrapper,
 			.post-bottom-wrapper {
 				height: 50%;
@@ -195,6 +255,7 @@ body.blog {
 			background-repeat: no-repeat;
 			background-size: cover;
 			background-position: center;
+			min-height: 10em;
 		}
 
 		.post-bottom-wrapper {

@@ -39,7 +39,7 @@
                 echo '</p>';
                 echo '</div>';
 
-                echo '<p class="slide-review__author">'. get_the_title() . '</p>';
+                // echo '<p class="slide-review__author">'. get_the_title() . '</p>';
 
             echo '</div>';
 

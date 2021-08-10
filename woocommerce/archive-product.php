@@ -59,23 +59,12 @@ get_header( 'shop' );
 
 	if (is_shop(10) && !in_array('search-results', $body_classes) && !in_array('search-no-results', $body_classes)  )  {
 
-		// echo '<div class="shop-category-menu>';
-
-		// wp_nav_menu(
-		// 	array(
-		// 		'theme_location' => 'wooshop-category-grid',
-		// 		'depth' => 1
-		// 	)
-		// );
-
-		// echo '</div>';
-
 		$cat_args = array(
 			'orderby'    => 'name',
 			'order' => 'ASC',
 			'hide_empty' => 'true',
 			'parent' => 0,
-			'orderby'=>"menu_order"
+			'orderby'=>"menu_order",
 		);
 
 		$product_categories = get_terms( 'product_cat', $cat_args );
@@ -95,17 +84,16 @@ get_header( 'shop' );
 				$image = wp_get_attachment_url( $thumbnail_id );
 				$short_description = get_field('category_short_description', $category);
 
+				if ($category->term_id == 377) {
+					continue;
+				}
+
 				if (!$image) {
 					$image = wc_placeholder_img_src();
 				}
 
-				// echo '<a class="brand-tile" href="'.get_term_link($category).'" >';
-				// echo '<p>' .$category_name. '</p>';
-				// echo '<img src="'.$image.'">';
-				// echo '</a>';
-
 				if (!empty($category)) {
-					echo '<a class="category-tile" href="'.get_term_link($category).'">';
+					echo '<a id="'.$category->term_id.'" class="category-tile" href="'.get_term_link($category).'">';
 					echo '<div class="category-tile__image" style="background-image: url('.$image.')";></div>';
 
 					echo '<div class="category-tile__text-wrapper">';
@@ -114,10 +102,6 @@ get_header( 'shop' );
 						echo '<p class="category-tile__short-description">' .$short_description. '</p>';
 					// }
 					echo '</div>';
-
-					// if (get_field('category_short_description', $category->term_id)) {
-					// 	echo '<p class="category_short_description">' . get_field('category_short_description', $category->term_id) . '</p>';
-					// }
 
 					echo '</a>';
 				}

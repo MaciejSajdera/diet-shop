@@ -66,20 +66,22 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	var blogPostsBlogSwiper = new Swiper(".swiper-container-blog-posts-blog", {
-		direction: "vertical",
-		loop: true,
-		// centeredSlides: true,
-		slidesPerView: 4,
+		direction: "horizontal",
+		// loop: false,
+		centeredSlides: true,
+		slidesPerView: 1.1,
 		speed: 1000,
-		autoplay: true,
-		spaceBetween: 100,
+		// autoplay: true,
+		spaceBetween: 20,
 		grabCursor: true,
-		// breakpoints: {
-		// 	992: {
-		// 		slidesPerView: 4,
-		// 		centeredSlides: false
-		// 	}
-		// },
+		breakpoints: {
+			992: {
+				slidesPerView: 3,
+				direction: "vertical",
+				centeredSlides: false,
+				spaceBetween: 100
+			}
+		},
 		autoplayDisableOnInteraction: false,
 		grabCursor: true,
 		// pagination: {

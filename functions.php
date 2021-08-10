@@ -46,10 +46,10 @@ if ( ! function_exists( 'poradnia_setup' ) ) :
 		register_nav_menus(
 			array(
 				'menu-1' => esc_html__( 'Primary', 'poradnia' ),
-				'wooshop' => esc_html__( 'Shop', 'poradnia' ),
-				'wooshop-category-grid' => esc_html__( 'Shop Category Grid', 'poradnia' ),
-				'cart' => esc_html__( 'Seperate', 'poradnia' ),
-				'footer-menu' => esc_html__( 'Footer', 'poradnia' )
+				// 'wooshop' => esc_html__( 'Shop', 'poradnia' ),
+				// 'wooshop-category-grid' => esc_html__( 'Shop Category Grid', 'poradnia' ),
+				// 'cart' => esc_html__( 'Seperate', 'poradnia' ),
+				// 'footer-menu' => esc_html__( 'Footer', 'poradnia' )
 			)
 		);
 
@@ -145,7 +145,7 @@ add_action( 'widgets_init', 'poradnia_widgets_init' );
  * Enqueue scripts and styles.
  */
 function poradnia_scripts() {
-	wp_enqueue_style( 'poradnia-style', get_template_directory_uri() . '/dist/css/style.css' );
+	wp_enqueue_style( 'poradnia-style', get_template_directory_uri() . '/dist/css/style.css', array(), '1.9');
 
 	// Include our dynamic styles.
 	// $custom_css = poradnia_dynamic_styles();
@@ -153,8 +153,6 @@ function poradnia_scripts() {
 
 	wp_enqueue_script( 'poradnia-app', get_template_directory_uri() . '/dist/js/main.js', array(), '', true );
 	wp_enqueue_script( 'scroll-animations', get_template_directory_uri() . '/dist/js/animations.js', array(), '', true );
-	wp_enqueue_script( 'maps', get_template_directory_uri() . '/dist/js/maps.js', array(), '', true );
-	wp_enqueue_script( 'google_js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB2qz86KFrOo7bnDKS7s6eunOj9N76G81I', '', '' );
 
 	if (is_front_page() || is_blog() ) {
 		wp_enqueue_script( 'poradnia-carousel', get_template_directory_uri() . '/dist/js/carousel.js', array(), '', true );
@@ -172,21 +170,13 @@ function poradnia_scripts() {
 		wp_enqueue_script( 'cart-update-auto', get_template_directory_uri() . '/dist/js/cart-update-auto.js', array(), '', true );
 	}
 
-	if (is_product_category() || is_shop()) {
-		wp_enqueue_script( 'product-filters', get_template_directory_uri() . '/dist/js/product-filters.js', array(), '', true );
-	}
-
 	if (
 		is_blog() ) {
 		wp_enqueue_script( 'blogAnimations', get_template_directory_uri() . '/dist/js/blogAnimations.js', array(), '', true );
 	};
 	
-
-	// if (is_page(34)) {
-
-	// }
-
 }
+
 add_action( 'wp_enqueue_scripts', 'poradnia_scripts' );
 
 add_theme_support( 'menus' );
@@ -216,7 +206,9 @@ add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
 function defer_parsing_of_js( $url ) {
     if ( is_user_logged_in() ) return $url; //don't break WP Admin
     if ( FALSE === strpos( $url, '.js' ) ) return $url;
-    if ( strpos( $url, 'jquery.js' ) ) return $url;
+    if ( strpos( $url, 'jquery' ) ) return $url;
+	if ( strpos( $url, 'wp-includes' ) ) return $url;
+	
     return str_replace( ' src', ' defer src', $url );
 }
 add_filter( 'script_loader_tag', 'defer_parsing_of_js', 10 );
@@ -1085,7 +1077,7 @@ add_filter( 'woocommerce_get_cart_item_from_session', 'd_get_cart_data_f_session
 function d_add_order_meta( $item_id, $values ) {
 
 	if ( ! empty( $values['extra_product_field'] ) ) {
-		woocommerce_add_order_item_meta( $item_id, 'extra_product_field', $values['extra_product_field'] );           
+		woocommerce_add_order_item_meta( $item_id, 'Produkty do wyeliminowania', $values['extra_product_field'] );           
 	}
 }
 add_action( 'woocommerce_add_order_item_meta', 'd_add_order_meta', 10, 2 );
@@ -1165,6 +1157,8 @@ function echo_product_variations_loop(){
     }
 }
 
+
+// https://sarkware.com/adding-custom-product-fields-to-woocommerce-without-using-plugins/
 
 // ---------------------------------------------
 // Remove Cross Sells From Default Position 

@@ -797,6 +797,10 @@ body.home {
 	// }
 }
 
+.promo-navigation-off {
+	padding-top: 2em;
+}
+
 .search-panel {
 	width: 100%;
 	transition: transform 0.3s ease-in-out;
@@ -1063,6 +1067,10 @@ body.home {
 			// align-items: center;
 			justify-content: space-between;
 			padding: 1em 1.5em;
+
+			&:hover, &:active {
+				color: $color__link-hover!important;
+			}
 		}
 
 		// .menu-parent-link {
@@ -1525,7 +1533,7 @@ body.woocommerce-account {
 	}
 
 	a {
-		color: $color__text-dark !important;
+		color: $color__text-dark;
 	}
 
 	.shop-nav__item svg {

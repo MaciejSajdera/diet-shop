@@ -86,6 +86,7 @@
 		width: 100%;
 		display: block;
 		height: 130%;
+		min-height: 17em;
 		left: 0;
 		z-index: -1;
 	}
@@ -239,6 +240,8 @@
 	}
 
 	li.custom_diet_product {
+		order: 2;
+
 		.kcal-variations {
 			&__variant {
 				border: 1px solid $background__grey--lighter;
@@ -1807,7 +1810,6 @@ form.woocommerce-form {
 		justify-content: space-around;
 
 		@media screen and (min-width: 992px) {
-
 		}
 	}
 
@@ -1891,6 +1893,14 @@ form.woocommerce-form {
 		background: transparent;
 	}
 
+	@media screen and (max-width: 768px) {
+		.download-file {
+			&:before {
+				margin-bottom: 0.75em;
+			}
+		}
+	}
+
 	fieldset {
 		@include fluid-type($min_width, $max_width, 12px, 14px);
 
@@ -1959,6 +1969,12 @@ form.woocommerce-form {
 				height: 2.75em;
 				line-height: 2.75em;
 			}
+		}
+	}
+
+	.woocommerce-EditAccountForm {
+		em {
+			font-size: 11px;
 		}
 	}
 
@@ -2577,6 +2593,7 @@ select {
 	p {
 		width: 100%;
 		margin-bottom: 2em;
+		text-align: left;
 	}
 
 	#billing_first_name_field {
@@ -2615,15 +2632,24 @@ select {
 	}
 
 	input[type="text"],
-	select,
+	input[type="tel"] select,
+	textarea,
 	.input-text {
-		padding: 0.5em;
-		border: none;
-		border-bottom: 1px solid black;
+		padding: 1em;
+		// border: none;
+		// border-bottom: 1px solid black;
+
+		text-align: left;
+	}
+
+	textarea {
+		min-height: 80px;
+		margin-top: 1em;
 	}
 
 	label {
 		font-family: $font_headers;
+		text-align: left;
 	}
 
 	.selection {
@@ -2762,13 +2788,13 @@ select {
 		}
 
 		.input-text {
-			color: $color__text-light;
+			color: $color__text-dark;
 			@media screen and (min-width: 992px) {
 				min-width: 300px;
 			}
 
 			&::placeholder {
-				color: $color__text-light;
+				color: $color__text-dark;
 			}
 		}
 
@@ -3358,6 +3384,10 @@ body.tax-product_cat {
 
 	#place_order {
 		@include fluid-type($min_width, $max_width, 20px, 24px);
+	}
+
+	.woocommerce-terms-and-conditions {
+		text-decoration: left;
 	}
 }
 

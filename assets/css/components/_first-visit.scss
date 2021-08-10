@@ -160,5 +160,9 @@
 	.green-button {
 		margin: 4rem auto;
 		@include fluid-type($min_width, $max_width, 14px, 26px);
+
+		@media screen and (min-width: 992px) {
+			margin: 8rem auto;
+		}
 	}
 }

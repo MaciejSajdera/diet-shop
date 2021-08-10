@@ -55,12 +55,12 @@ get_header();
 									/* Start the Loop */
 									while ( $blog_query->have_posts() ) : $blog_query->the_post();
 
-										echo "<div class='post-wrapper swiper-slide'>";
+										echo '<a class="post-wrapper swiper-slide" href="'. get_permalink() .'">';
 
 											echo "<div class='post-upper-wrapper'>";
-													echo '<a class="blog-post" href="'. get_permalink() .'" style="background-image: url(' .get_the_post_thumbnail_url(). ')">';
+													echo '<div class="blog-post"  style="background-image: url(' .get_the_post_thumbnail_url(). ')">';
 
-													echo '</a>';
+													echo '</div>';
 
 											echo "</div>";
 
@@ -69,12 +69,12 @@ get_header();
 												echo "<div class='post-bottom-wrapper__text-content'>";
 													echo '<p>' . get_the_title() . '</p>';
 
-													echo '<p>' . get_the_date( 'dS M Y', $post->ID ) . '</p>';
+													echo '<p>' . get_the_date( 'j F Y', $post->ID ) . '</p>';
 												echo "</div>";
 
 											echo '</div>';
 
-										echo "</div>";
+										echo '</a>';
 
 									endwhile;
 
